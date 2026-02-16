@@ -15,7 +15,7 @@ export default tool({
     const { URL, CaptureScreenshot, WaitSeconds } = args;
 
     try {
-      const workspaceRoot = context.worktree || context.directory || process.cwd();
+      const workspaceRoot = process.cwd();
       const timeout = Math.min(Math.max(1, WaitSeconds), 30) * 1000;
 
       // Validate URL

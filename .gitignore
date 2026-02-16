@@ -1,11 +1,16 @@
 # Ignore everything by default
 *
 
-# Allow specific files
+# Allow .gitignore
 !.gitignore
-!*.ts
-!*.md
 
-# But still ignore test files even within allowed types
-*.test.ts
-*.spec.ts
+# Allow only root-level .ts and .md files
+!/*.ts
+!/*.md
+
+# Ignore test files in root
+/*.test.ts
+/*.spec.ts
+
+# Ignore all subdirectories and their contents
+*/

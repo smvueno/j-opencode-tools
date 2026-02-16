@@ -12,21 +12,7 @@ Custom tools for OpenCode AI agent, extending functionality with specialized uti
 
 ## Installation
 
-These are OpenCode AI plugin tools. They need to be placed in your OpenCode tools directory.
-
-### Quick Start (Recommended)
-
-```bash
-# 1. Clone to your OpenCode tools directory
-git clone https://github.com/smvueno/j-opencode-tools.git ~/.config/opencode/tools/
-
-# 2. Run the setup script to install dependencies
-cd ~/.config/opencode/tools/
-npm install
-
-# Or manually install just what you need:
-pnpm add -g @wakaru/cli  # Only needed for unminify_js.ts
-```
+These are OpenCode AI plugin tools. Simply copy the `.ts` files to your OpenCode tools directory.
 
 ### Option 1: Clone to OpenCode tools directory
 
@@ -38,25 +24,25 @@ git clone https://github.com/smvueno/j-opencode-tools.git ~/.config/opencode/too
 ### Option 2: Copy individual tools
 
 ```bash
-# Copy specific tools you need
+# Copy only the tools you need
 cp j-browser-playwright.ts ~/.config/opencode/tools/
 cp replace_file_content.ts ~/.config/opencode/tools/
 ```
 
-### Dependencies
+### Optional Dependencies
 
-| Tool | Dependencies | Auto-install? |
-|------|-------------|---------------|
-| **j-browser-playwright.ts** | Playwright | ✅ Yes - auto-installs in temp directory |
-| **replace_file_content.ts** | None | N/A - No dependencies |
-| **multi_replace_file_content.ts** | None | N/A - No dependencies |
-| **unminify_js.ts** | @wakaru/cli | ⚠️ Will try auto-install, or install manually:
+| Tool | Dependencies | Install |
+|------|-------------|---------|
+| **j-browser-playwright.ts** | Playwright | ✅ Auto-installs on first use |
+| **replace_file_content.ts** | None | N/A |
+| **multi_replace_file_content.ts** | None | N/A |
+| **unminify_js.ts** | @wakaru/cli | ⚠️ Install manually if needed:
 
 ```bash
-# Install @wakaru/cli globally (choose one):
+# Install @wakaru/cli globally (only needed for unminify_js.ts):
 pnpm add -g @wakaru/cli
-npm install -g @wakaru/cli
-yarn global add @wakaru/cli
+# or: npm install -g @wakaru/cli
+# or: yarn global add @wakaru/cli
 ```
 
 ## Usage

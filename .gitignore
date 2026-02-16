@@ -1,12 +1,11 @@
 # Ignore everything by default
 *
 
-# Allow specific files and directories
+# Allow specific files
 !.gitignore
 !*.ts
 !*.md
-!package.json
 
-# But still ignore certain patterns even within allowed types
+# But still ignore test files even within allowed types
 *.test.ts
 *.spec.ts

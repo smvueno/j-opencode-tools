@@ -1,60 +1,12 @@
-# Dependencies
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
+# Ignore everything by default
+*
 
-# Package files
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
+# Allow specific files and directories
+!.gitignore
+!*.ts
+!*.md
+!package.json
 
-# Environment variables
-.env
-.env.local
-.env.*.local
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# IDE/Editor files
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# Build/Output directories
-dist/
-build/
-out/
-coverage/
-
-# Logs
-logs/
-*.log
-
-# Temporary files
-tmp/
-temp/
-.cache/
-
-# Playwright
-playwright-report/
-test-results/
-.browser-*/
-
-# Screenshots (only keep if explicitly needed)
-screenshot-*.png
-
-# Test files
+# But still ignore certain patterns even within allowed types
 *.test.ts
 *.spec.ts
-__tests__/
-__mocks__/
-
-# TypeScript
-*.tsbuildinfo
-tsc-output/

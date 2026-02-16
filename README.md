@@ -12,9 +12,36 @@ Custom tools for OpenCode AI agent, extending functionality with specialized uti
 
 ## Installation
 
+These are OpenCode AI plugin tools. They need to be placed in your OpenCode tools directory.
+
+### Option 1: Clone to OpenCode tools directory
+
 ```bash
-npm install
+# Find your OpenCode tools directory (usually ~/.config/opencode/tools/)
+# Clone or copy the .ts files there
+git clone https://github.com/smvueno/j-opencode-tools.git ~/.config/opencode/tools/
 ```
+
+### Option 2: Copy individual tools
+
+```bash
+# Copy specific tools you need
+cp j-browser-playwright.ts ~/.config/opencode/tools/
+cp replace_file_content.ts ~/.config/opencode/tools/
+```
+
+### Prerequisites
+
+Some tools have external dependencies:
+
+- **j-browser-playwright.ts**: Automatically installs Playwright in temp directories (no manual setup needed)
+- **unminify_js.ts**: Requires `@wakaru/cli` - install with:
+  ```bash
+  pnpm add -g @wakaru/cli
+  # or: npm install -g @wakaru/cli
+  # or: yarn global add @wakaru/cli
+  ```
+- **replace_file_content.ts** & **multi_replace_file_content.ts**: No dependencies (uses Node.js built-ins only)
 
 ## Usage
 

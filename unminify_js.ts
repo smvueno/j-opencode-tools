@@ -107,19 +107,50 @@ This tool only works with JavaScript files.`;
       }
 
       if (!wakaruInstalled) {
-        const installCommands = {
-          pnpm: 'pnpm add -g @wakaru/cli',
-          npm: 'npm install -g @wakaru/cli',
-          yarn: 'yarn global add @wakaru/cli'
-        };
+        // Try to auto-install wakaru
+        if (packageManagerAvailable && InstallIfMissing) {
+          console.log(`Installing @wakaru/cli using ${PackageManager}...`);
+          try {
+            const installCmd = PackageManager === 'pnpm' ? 'pnpm add -g @wakaru/cli' :
+                              PackageManager === 'yarn' ? 'yarn global add @wakaru/cli' :
+                                                          'npm install -g @wakaru/cli';
+            
+            execSync(installCmd, {
+              cwd: workspaceRoot,
+              timeout: 120000,
+              stdio: 'pipe'
+            });
+            
+            // Verify installation
+            try {
+              execSync('wakaru --version', { stdio: 'pipe', timeout: 5000 });
+              wakaruInstalled = true;
+              console.log('✓ @wakaru/cli installed successfully!');
+            } catch {
+              console.log('Installation completed but verification failed. Trying with npx/pnpm dlx...');
+            }
+          } catch (installError) {
+            console.log(`Auto-installation failed: ${installError.message}`);
+          }
+        }
+        
+        // If still not installed, show manual instructions
+        if (!wakaruInstalled) {
+          const installCommands = {
+            pnpm: 'pnpm add -g @wakaru/cli',
+            npm: 'npm install -g @wakaru/cli',
+            yarn: 'yarn global add @wakaru/cli'
+          };
 
-        const pmStatus = packageManagerAvailable ? '✓ available' : '✗ not installed';
+          const pmStatus = packageManagerAvailable ? '✓ available' : '✗ not installed';
 
-        return `⚠️  WAKARU NOT INSTALLED
+          return `⚠️  WAKARU NOT INSTALLED
 
 @wakaru/cli is required for unminifying JavaScript.
 
-INSTALL NOW (recommended - ${PackageManager}): ${pmStatus}
+AUTO-INSTALL: ${InstallIfMissing ? 'Attempted but failed' : 'Disabled (set InstallIfMissing=true to enable)'}
+
+INSTALL MANUALLY (recommended - ${PackageManager}): ${pmStatus}
   ${installCommands[PackageManager]}
 
 OR USE ALTERNATIVE:
@@ -130,6 +161,7 @@ ${!packageManagerAvailable ? '⚠️  ' + PackageManager + ' not found. Install 
 
 VERIFICATION:
 Run: ${PackageManager === 'pnpm' ? 'pnpm dlx @wakaru/cli --version' : 'npx @wakaru/cli --version'}`;
+        }
       }
 
       // Determine output path

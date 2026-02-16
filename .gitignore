@@ -4,9 +4,14 @@
 # Allow .gitignore
 !.gitignore
 
-# Allow only root-level .ts and .md files
+# Allow only root-level .ts, .md, .js and config files
 !/*.ts
 !/*.md
+!/*.js
+!/package.json
+!/package-lock.json
+!/pnpm-lock.yaml
+!/yarn.lock
 
 # Ignore test files in root
 /*.test.ts

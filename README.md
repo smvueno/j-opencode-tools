@@ -14,11 +14,24 @@ Custom tools for OpenCode AI agent, extending functionality with specialized uti
 
 These are OpenCode AI plugin tools. They need to be placed in your OpenCode tools directory.
 
+### Quick Start (Recommended)
+
+```bash
+# 1. Clone to your OpenCode tools directory
+git clone https://github.com/smvueno/j-opencode-tools.git ~/.config/opencode/tools/
+
+# 2. Run the setup script to install dependencies
+cd ~/.config/opencode/tools/
+npm install
+
+# Or manually install just what you need:
+pnpm add -g @wakaru/cli  # Only needed for unminify_js.ts
+```
+
 ### Option 1: Clone to OpenCode tools directory
 
 ```bash
 # Find your OpenCode tools directory (usually ~/.config/opencode/tools/)
-# Clone or copy the .ts files there
 git clone https://github.com/smvueno/j-opencode-tools.git ~/.config/opencode/tools/
 ```
 
@@ -30,18 +43,21 @@ cp j-browser-playwright.ts ~/.config/opencode/tools/
 cp replace_file_content.ts ~/.config/opencode/tools/
 ```
 
-### Prerequisites
+### Dependencies
 
-Some tools have external dependencies:
+| Tool | Dependencies | Auto-install? |
+|------|-------------|---------------|
+| **j-browser-playwright.ts** | Playwright | ✅ Yes - auto-installs in temp directory |
+| **replace_file_content.ts** | None | N/A - No dependencies |
+| **multi_replace_file_content.ts** | None | N/A - No dependencies |
+| **unminify_js.ts** | @wakaru/cli | ⚠️ Will try auto-install, or install manually:
 
-- **j-browser-playwright.ts**: Automatically installs Playwright in temp directories (no manual setup needed)
-- **unminify_js.ts**: Requires `@wakaru/cli` - install with:
-  ```bash
-  pnpm add -g @wakaru/cli
-  # or: npm install -g @wakaru/cli
-  # or: yarn global add @wakaru/cli
-  ```
-- **replace_file_content.ts** & **multi_replace_file_content.ts**: No dependencies (uses Node.js built-ins only)
+```bash
+# Install @wakaru/cli globally (choose one):
+pnpm add -g @wakaru/cli
+npm install -g @wakaru/cli
+yarn global add @wakaru/cli
+```
 
 ## Usage
 

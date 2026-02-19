@@ -25,14 +25,15 @@ git clone https://github.com/smvueno/j-opencode-tools.git ~/.config/opencode/too
 
 ```bash
 # Copy only the tools you need
+cp j-file-tool.ts ~/.config/opencode/tools/
 cp j-browser-playwright.ts ~/.config/opencode/tools/
-cp replace_file_content.ts ~/.config/opencode/tools/
 ```
 
 ### Optional Dependencies
 
 | Tool | Dependencies | Install |
 |------|-------------|---------|
+| **j-file-tool.ts** | None | N/A |
 | **j-browser-playwright.ts** | Playwright | ✅ Auto-installs on first use |
 | **replace_file_content.ts** | None | N/A |
 | **multi_replace_file_content.ts** | None | N/A |
@@ -49,9 +50,10 @@ pnpm add -g @wakaru/cli
 
 These tools integrate with OpenCode to provide enhanced capabilities:
 
+- **j-file-tool.ts** - **(NEW)** The Ultimate File Tool. Reads, writes (batch/single), creates, and safely deletes files with strict "Read-Before-Write" enforcement. Replaces `replace_file_content` and `multi_replace_file_content`.
 - **j-browser-playwright.ts** - Browser automation using Playwright
-- **replace_file_content.ts** - Replace content in files with validation
-- **multi_replace_file_content.ts** - Batch replacements across multiple files
+- **replace_file_content.ts** - (Legacy) Replace content in files with validation
+- **multi_replace_file_content.ts** - (Legacy) Batch replacements across multiple files
 - **unminify_js.ts** - Unminify and beautify JavaScript bundles
 
 ## Development
